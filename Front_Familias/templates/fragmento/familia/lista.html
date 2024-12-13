@@ -1,0 +1,268 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="wrapper py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-uppercase text-info">Panel de Familias</h1>
+        <p class="text-muted">Administración fácil y efectiva</p>
+    </div>
+
+    <div class="features d-flex flex-column flex-lg-row justify-content-around align-items-start">
+        <!-- Sección de búsqueda -->
+        <div class="search-panel border rounded p-4 bg-white shadow-sm mb-4 mb-lg-0">
+            <h4 class="text-secondary mb-3"><i class="bi bi-search"></i> Búsqueda Inteligente</h4>
+            <form id="searchForm" class="form">
+                <div class="form-group mb-3">
+                    <label for="searchField" class="form-label">Seleccione un Campo</label>
+                    <select id="searchField" class="form-select">
+                        <option value="">-- Seleccione --</option>
+                        <option value="canton">Cantón</option>
+                        <option value="apellidoPaterno">Apellido Paterno</option>
+                        <option value="apellidoMaterno">Apellido Materno</option>
+                        <option value="integrantes">Número de Integrantes</option>
+                        <option value="tieneGenerador">Tiene Generador</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="searchValue" class="form-label">Valor</label>
+                    <input type="text" id="searchValue" class="form-control">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="searchAlgorithm" class="form-label">Algoritmo</label>
+                    <select id="searchAlgorithm" class="form-select">
+                        <option value="lineal">Lineal</option>
+                        <option value="binaria">Binaria</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-info w-100">Buscar</button>
+            </form>
+        </div>
+
+        <!-- Sección de ordenamiento -->
+        <div class="sort-panel border rounded p-4 bg-white shadow-sm">
+            <h4 class="text-secondary mb-3"><i class="bi bi-sort-alpha-down"></i> Ordenar Registros</h4>
+            <form id="sortForm" class="form">
+                <div class="form-group mb-3">
+                    <label for="sortField" class="form-label">Criterio</label>
+                    <select id="sortField" class="form-select">
+                        <option value="">-- Seleccione --</option>
+                        <option value="paterno">Apellido Paterno</option>
+                        <option value="materno">Apellido Materno</option>
+                        <option value="ubicacion">Cantón</option>
+                        <option value="miembros">Integrantes</option>
+                        <option value="energia">Generador</option>
+                    </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="sortAlgorithm" class="form-label">Algoritmo</label>
+                    <select id="sortAlgorithm" class="form-select">
+                        <option value="shellsort">ShellSort</option>
+                        <option value="mergesort">MergeSort</option>
+                        <option value="quicksort">QuickSort</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="sortDirection" class="form-label">Dirección</label>
+                    <select id="sortDirection" class="form-select">
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Descendente</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning w-100">Ordenar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de resultados -->
+    <div class="results-table mt-5">
+        <h4 class="text-center text-success mb-3">Resultados</h4>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="bg-info text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Cantón</th>
+                        <th>Apellidos</th>
+                        <th>Integrantes</th>
+                        <th>Generador</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="familiaTableBody">
+                    {% for item in lista_familia %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.canton }}</td>
+                        <td>{{ item.apellidoPaterno }} {{ item.apellidoMaterno }}</td>
+                        <td>{{ item.integrantes }}</td>
+                        <td>
+                            <span class="badge bg-{{ 'success' if item.tieneGenerador else 'danger' }}">
+                                {{ 'Sí' if item.tieneGenerador else 'No' }}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm">Editar</button>
+                            <button class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .wrapper {
+        background-color: #f8f9fa;
+    }
+
+    .features .search-panel,
+    .features .sort-panel {
+        max-width: 400px;
+    }
+
+    .results-table .table {
+        border: 1px solid #ddd;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchForm = document.getElementById('searchForm');
+        const sortForm = document.getElementById('sortForm');
+
+        // Manejar búsqueda
+        searchForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (this.checkValidity()) {
+                const searchField = document.getElementById('searchField').value;
+                const searchValue = document.getElementById('searchValue').value;
+                const searchAlgorithm = document.getElementById('searchAlgorithm').value;
+
+                try {
+                    const response = await fetch(`/admin/familia/buscar?${searchField}=${searchValue}&algorithm=${searchAlgorithm}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        updateTable(data.data || []);
+                    } else {
+                        throw new Error('Error en la búsqueda');
+                    }
+                } catch (error) {
+                    alert('Error al realizar la búsqueda: ' + error.message);
+                }
+            }
+        });
+
+        // Manejar ordenamiento
+        sortForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            if (this.checkValidity()) {
+                // Mapear los campos del frontend a los que espera el backend
+                const fieldMapping = {
+                    'paterno': 'apellidopaterno',
+                    'materno': 'apellidomaterno',
+                    'ubicacion': 'canton',
+                    'miembros': 'integrantes',
+                    'energia': 'generador'
+                };
+
+                const sortField = fieldMapping[document.getElementById('sortField').value];
+                const sortDirection = document.getElementById('sortDirection').value === 'asc' ? 'ascendente' : 'descendente';
+                const sortAlgorithm = document.getElementById('sortAlgorithm').value.toLowerCase();
+
+                try {
+                    const response = await fetch(`/admin/familia/ordenar?criterio=${sortField}&orden=${sortDirection}&algoritmo=${sortAlgorithm}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.resultados) {
+                            updateTable(data.resultados);
+                        } else {
+                            throw new Error('No se recibieron resultados del servidor');
+                        }
+                    } else {
+                        throw new Error('Error en el ordenamiento');
+                    }
+                } catch (error) {
+                    alert('Error al ordenar los datos: ' + error.message);
+                }
+            }
+        });
+
+        // Función para actualizar la tabla
+        function updateTable(data) {
+            const tbody = document.getElementById('familiaTableBody');
+            tbody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.canton}</td>
+                    <td>${item.apellidoPaterno} ${item.apellidoMaterno}</td>
+                    <td>${item.integrantes}</td>
+                    <td>
+                        <span class="badge ${item.tieneGenerador ? 'bg-success' : 'bg-secondary'}">
+                            ${item.tieneGenerador ? 'Sí' : 'No'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-outline-primary btn-sm">Editar</button>
+                            <button class="btn btn-outline-danger btn-sm">Eliminar</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Manejar el tipo de entrada según el campo de búsqueda
+        document.getElementById('searchField').addEventListener('change', function () {
+            const valueInput = document.getElementById('searchValue');
+            const algorithmSelect = document.getElementById('searchAlgorithm');
+
+            switch (this.value) {
+                case 'integrantes':
+                    valueInput.type = 'number';
+                    valueInput.min = '1';
+                    break;
+                case 'tieneGenerador':
+                    valueInput.type = 'select';
+                    valueInput.innerHTML = `
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    `;
+                    break;
+                default:
+                    valueInput.type = 'text';
+                    break;
+            }
+
+            // Habilitar/deshabilitar búsqueda binaria según el campo
+            if (this.value === 'integrantes') {
+                algorithmSelect.querySelector('option[value="binaria"]').disabled = false;
+            } else {
+                algorithmSelect.value = 'lineal';
+                algorithmSelect.querySelector('option[value="binaria"]').disabled = true;
+            }
+        });
+    });
+
+    async function deleteFamilia(id) {
+        if (confirm('¿Confirma que desea eliminar esta familia?')) {
+            try {
+                const response = await fetch(`/admin/familia/delete/${id}`, {
+                    method: 'POST'
+                });
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Error al eliminar la familia');
+                }
+            } catch (error) {
+                alert('Error al eliminar la familia: ' + error.message);
+            }
+        }
+    }
+</script>
+{% endblock %}

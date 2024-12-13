@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "costo": 5.0,
+        "consumoXHora": 1.0,
+        "energiaGenerada": 21.0,
+        "uso": "ninguno"
+    }
+]

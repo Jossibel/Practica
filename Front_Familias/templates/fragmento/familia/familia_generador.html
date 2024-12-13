@@ -1,0 +1,60 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="pagetitle text-center">
+    <h1>LISTADO DE FAMILIAS/GENERADORES</h1>
+</div>
+
+
+<!-- Bloque para mostrar mensajes de flash -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <div class="alert alert-warning">
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endwith %}
+
+<p style="margin-left:22em;">Total de familias con generador: {{ familias_con_generador }} de {{ total_familias }}</p>
+
+<body>
+    <br>
+    <table style="width: 80%; max-width: 1200px; margin: 0 auto; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Cantón</th>
+                <th>Integrantes</th>
+                <th>Tiene Generador</th>
+                <th>Costo del Generador</th>
+                <th>Consumo por Hora</th>
+                <th>Energia Generada</th>
+                <th>Uso</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fg in familias_generadores %}
+            <tr>
+                <td>{{ fg.familia.id }}</td>
+                <td>{{ fg.familia.apellidoPaterno }}</td>
+                <td>{{ fg.familia.apellidoMaterno }}</td>
+                <td>{{ fg.familia.canton }}</td>
+                <td>{{ fg.familia.integrantes }}</td>
+                <td>{{ 'Sí' if fg.familia.tieneGenerador else 'No' }}</td>
+                <td>{{ fg.generador.costo if fg.generador else 'No tiene generador' }}</td>
+                <td>{{ fg.generador.consumoXHora if fg.generador else 'N/A' }}</td>
+                <td>{{ fg.generador.energiaGenerada if fg.generador else 'N/A' }}</td>
+                <td>{{ fg.generador.uso if fg.generador else 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+<br>
+<br>
+<br>
+{% endblock %}

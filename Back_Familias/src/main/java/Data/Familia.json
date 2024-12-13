@@ -1,0 +1,282 @@
+[
+    {
+        "id": 1,
+        "canton": "Azuay",
+        "apellidoPaterno": "Vera",
+        "apellidoMaterno": "Chicaiza",
+        "integrantes": 5,
+        "tieneGenerador": true
+    },
+    {
+        "id": 2,
+        "canton": "Tungurahua",
+        "apellidoPaterno": "Castillo",
+        "apellidoMaterno": "Paredes",
+        "integrantes": 6,
+        "tieneGenerador": true
+    },
+    {
+        "id": 3,
+        "canton": "Loja",
+        "apellidoPaterno": "Gomez",
+        "apellidoMaterno": "Zambrano",
+        "integrantes": 4,
+        "tieneGenerador": true
+    },
+    {
+        "id": 4,
+        "canton": "Guayas",
+        "apellidoPaterno": "Jimenez",
+        "apellidoMaterno": "Quiroz",
+        "integrantes": 9,
+        "tieneGenerador": true
+    },
+    {
+        "id": 5,
+        "canton": "Manab\u00ed",
+        "apellidoPaterno": "Perez",
+        "apellidoMaterno": "Arevalo",
+        "integrantes": 6,
+        "tieneGenerador": false
+    },
+    {
+        "id": 6,
+        "canton": "Esmeraldas",
+        "apellidoPaterno": "Cordero",
+        "apellidoMaterno": "Lopez",
+        "integrantes": 3,
+        "tieneGenerador": true
+    },
+    {
+        "id": 7,
+        "canton": "Pichincha",
+        "apellidoPaterno": "Ruiz",
+        "apellidoMaterno": "Mendoza",
+        "integrantes": 7,
+        "tieneGenerador": true
+    },
+    {
+        "id": 8,
+        "canton": "Imbabura",
+        "apellidoPaterno": "Santana",
+        "apellidoMaterno": "Valdez",
+        "integrantes": 8,
+        "tieneGenerador": false
+    },
+    {
+        "id": 9,
+        "canton": "El Oro",
+        "apellidoPaterno": "Torres",
+        "apellidoMaterno": "Bermudez",
+        "integrantes": 5,
+        "tieneGenerador": true
+    },
+    {
+        "id": 10,
+        "canton": "Carchi",
+        "apellidoPaterno": "Chavez",
+        "apellidoMaterno": "Morales",
+        "integrantes": 4,
+        "tieneGenerador": false
+    },
+    {
+        "id": 11,
+        "canton": "Loja",
+        "apellidoPaterno": "Herrera",
+        "apellidoMaterno": "Salazar",
+        "integrantes": 6,
+        "tieneGenerador": true
+    },
+    {
+        "id": 12,
+        "canton": "Chimborazo",
+        "apellidoPaterno": "Rosales",
+        "apellidoMaterno": "Ortega",
+        "integrantes": 7,
+        "tieneGenerador": false
+    },
+    {
+        "id": 13,
+        "canton": "Pastaza",
+        "apellidoPaterno": "Salinas",
+        "apellidoMaterno": "Fernandez",
+        "integrantes": 8,
+        "tieneGenerador": true
+    },
+    {
+        "id": 14,
+        "canton": "Guayas",
+        "apellidoPaterno": "Avila",
+        "apellidoMaterno": "Cano",
+        "integrantes": 3,
+        "tieneGenerador": true
+    },
+    {
+        "id": 15,
+        "canton": "Cotopaxi",
+        "apellidoPaterno": "Guzman",
+        "apellidoMaterno": "Vargas",
+        "integrantes": 5,
+        "tieneGenerador": false
+    },
+    {
+        "id": 16,
+        "canton": "Ca\u00f1ar",
+        "apellidoPaterno": "Rivera",
+        "apellidoMaterno": "Palacios",
+        "integrantes": 9,
+        "tieneGenerador": true
+    },
+    {
+        "id": 17,
+        "canton": "Sucumb\u00edos",
+        "apellidoPaterno": "Rojas",
+        "apellidoMaterno": "Guerrero",
+        "integrantes": 2,
+        "tieneGenerador": true
+    },
+    {
+        "id": 18,
+        "canton": "Santo Domingo",
+        "apellidoPaterno": "Flores",
+        "apellidoMaterno": "Montalvo",
+        "integrantes": 6,
+        "tieneGenerador": false
+    },
+    {
+        "id": 19,
+        "canton": "Santa Elena",
+        "apellidoPaterno": "Ordo\u00f1ez",
+        "apellidoMaterno": "Benitez",
+        "integrantes": 7,
+        "tieneGenerador": true
+    },
+    {
+        "id": 20,
+        "canton": "Azuay",
+        "apellidoPaterno": "Luna",
+        "apellidoMaterno": "Coronel",
+        "integrantes": 3,
+        "tieneGenerador": true
+    },
+    {
+        "id": 21,
+        "canton": "Imbabura",
+        "apellidoPaterno": "Paredes",
+        "apellidoMaterno": "Villalva",
+        "integrantes": 6,
+        "tieneGenerador": false
+    },
+    {
+        "id": 22,
+        "canton": "Guayas",
+        "apellidoPaterno": "Martinez",
+        "apellidoMaterno": "Sosa",
+        "integrantes": 4,
+        "tieneGenerador": true
+    },
+    {
+        "id": 23,
+        "canton": "Carchi",
+        "apellidoPaterno": "Carrillo",
+        "apellidoMaterno": "Navarro",
+        "integrantes": 5,
+        "tieneGenerador": true
+    },
+    {
+        "id": 24,
+        "canton": "Chimborazo",
+        "apellidoPaterno": "Moreno",
+        "apellidoMaterno": "Padilla",
+        "integrantes": 8,
+        "tieneGenerador": true
+    },
+    {
+        "id": 25,
+        "canton": "Esmeraldas",
+        "apellidoPaterno": "Campos",
+        "apellidoMaterno": "Fierro",
+        "integrantes": 7,
+        "tieneGenerador": false
+    },
+    {
+        "id": 26,
+        "canton": "Tungurahua",
+        "apellidoPaterno": "Molina",
+        "apellidoMaterno": "Rodriguez",
+        "integrantes": 9,
+        "tieneGenerador": true
+    },
+    {
+        "id": 27,
+        "canton": "Manab\u00ed",
+        "apellidoPaterno": "Bravo",
+        "apellidoMaterno": "Santos",
+        "integrantes": 4,
+        "tieneGenerador": true
+    },
+    {
+        "id": 28,
+        "canton": "Loja",
+        "apellidoPaterno": "Yanez",
+        "apellidoMaterno": "Castro",
+        "integrantes": 5,
+        "tieneGenerador": false
+    },
+    {
+        "id": 29,
+        "canton": "Santa Elena",
+        "apellidoPaterno": "Zapata",
+        "apellidoMaterno": "Medina",
+        "integrantes": 8,
+        "tieneGenerador": true
+    },
+    {
+        "id": 30,
+        "canton": "Pastaza",
+        "apellidoPaterno": "Arroyo",
+        "apellidoMaterno": "Lima",
+        "integrantes": 3,
+        "tieneGenerador": false
+    },
+    {
+        "id": 31,
+        "canton": "Sucumb\u00edos",
+        "apellidoPaterno": "Fuentes",
+        "apellidoMaterno": "Trujillo",
+        "integrantes": 6,
+        "tieneGenerador": true
+    },
+    {
+        "id": 32,
+        "canton": "Ca\u00f1ar",
+        "apellidoPaterno": "Espinoza",
+        "apellidoMaterno": "Carrera",
+        "integrantes": 7,
+        "tieneGenerador": true
+    },
+    {
+        "id": 33,
+        "canton": "Cotopaxi",
+        "apellidoPaterno": "Valencia",
+        "apellidoMaterno": "Ruiz",
+        "integrantes": 4,
+        "tieneGenerador": true
+    },
+    {
+        "id": 34,
+        "canton": "Pichincha",
+        "apellidoPaterno": "Serrano",
+        "apellidoMaterno": "Ibarra",
+        "integrantes": 9,
+        "tieneGenerador": false
+    },
+    {
+        "id": 35,
+        "canton": "El Oro",
+        "apellidoPaterno": "Camacho",
+        "apellidoMaterno": "Quintero",
+        "integrantes": 3,
+        "tieneGenerador": true
+    }
+]

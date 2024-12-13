@@ -1,0 +1,87 @@
+{% extends "template.html" %}
+{% block content %}
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">REGISTRO</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Blog</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title text-center">Bienvenido</h5>
+  
+                          <form class="row g-3 needs-validation" method="POST" action="/admin/familia/save" novalidate>
+                              <div class="col-md-6">
+                                  <label for="dni" class="form-label">Canton</label>
+                                  <input type="text" class="form-control" id="canton" name="can" required>
+                              </div>
+  
+                              <div class="col-md-6">
+                                  <label for="apellido" class="form-label">Apellido Paterno</label>
+                                  <input type="text" class="form-control" id="apellidop" name="ape" required>
+                              </div>
+  
+                              <div class="col-md-6">
+                                  <label for="nombre" class="form-label">Apellido Materno</label>
+                                  <input type="text" class="form-control" id="apellidom" name="apem" required>
+                              </div>
+  
+                              <div class="col-md-6">
+                                  <label for="celular" class="form-label">Integrantes</label>
+                                  <input type="text" class="form-control" id="integrantes" name="inte" required>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="tienegenerador" class="form-label">¿Tiene generador?</label>
+                                <select class="form-control" id="tienegenerador" name="tieneg" required>
+                                    <option value="" disabled selected>Seleccionar...</option>
+                                    <option value="true">Sí</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                              <div class="col-md-6">
+                              <label for="celular" class="form-label">Costo (USD)</label>
+                              <input type="text" class="form-control" id="costo" name="cost" required>
+                              </div>
+
+                              <div class="col-md-6">
+                                <label for="celular" class="form-label">Consumo por Hora (L/h)</label>
+                                <input type="text" class="form-control" id="consumoxhora" name="conxh" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                  <label for="celular" class="form-label">Energia Generada (kWh)</label>
+                                  <input type="text" class="form-control" id="energiagenerada" name="energen" required>
+                                  </div>
+
+
+                                  <div class="col-md-6">
+                                    <label for="celular" class="form-label">Uso</label>
+                                    <input type="text" class="form-control" id="uso" name="uso" required>
+                                    </div>
+
+                              <div class="col-12 text-center">
+                                  <button class="btn btn-success" type="submit">REGISTRAR</button>
+                                  <a href="/admin/familia/list" class="btn btn-danger">CANCELAR</a>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+{% endblock %}
